@@ -18,8 +18,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        Vite::prefetch(concurrency: 3);
+    public function boot()
+{
+    // Cek apakah aplikasi berjalan di lingkungan Vercel
+    if (env('APP_ENV') === 'production') {
+        app()->useStoragePath('/tmp');
     }
+}
 }
