@@ -1,12 +1,14 @@
 import '../css/app.css';
 import './bootstrap';
-import { Ziggy } from './ziggy'; // Ini sudah benar
+
+// 1. Impor Ziggy dari file lokal yang kamu generate
+import { Ziggy } from './ziggy'; 
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 
-// UBAH BARIS INI: Jangan ambil dari ../../vendor/
+// 2. Impor ZiggyVue dari package npm, BUKAN dari vendor
 import { ZiggyVue } from 'ziggy-js'; 
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -21,7 +23,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-            // Gunakan ZiggyVue dan masukkan data rute dari file ziggy.js lokal
+            // 3. Masukkan objek Ziggy ke dalam plugin ZiggyVue
             .use(ZiggyVue, Ziggy) 
             .mount(el);
     },
