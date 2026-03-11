@@ -20,8 +20,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            'ziggy-js': path.resolve('resources/js/ziggy.js'),
-            '@': '/resources/js', // Penting untuk handle import '@/Layouts/...'
+            'ziggy-js': path.resolve('resources/js/ziggy.js'), // Arahkan ke file lokal
+            '@': path.resolve('resources/js'),
         },
     },
 });
